@@ -41,7 +41,7 @@ const prompt = require("prompt-sync")();
     const juca = `Juca: `
     var eo = {
         nome: `Eo Fyragos`,
-        vitalidade: 10,
+        vitalidade: 100,
         vida: 3,
         mochilaEo: mochila,
         atk: parseInt(Math.floor(Math.random() * 6) + 1)
@@ -49,7 +49,7 @@ const prompt = require("prompt-sync")();
 
     var cydros = {
         nome: `Cydros`,
-        vitalidade: 10,
+        vitalidade: 250,
         vida: 1,
         atk: parseInt(Math.floor(Math.random() * 6) + 1)
     }
@@ -82,11 +82,13 @@ const prompt = require("prompt-sync")();
         pescar(){
             var pesc = parseInt(Math.floor(Math.random() * 6) + 1);
             if (pesc >= 5){
+                console.clear()
                 console.log(`SPLASH! SPLASH! SPLASH! SPLASH! SPLASH!`);
                 console.log(`${juca}Parabéns! Você pescou um Bagri.`);
                 objetos(this.nome2);
                 mochila[0].qnt++
             } else {
+                console.clear()
                 this.sons();
                 console.log(`${juca}Você não pescou nada, tente novamente!`);
             }
@@ -109,6 +111,7 @@ const prompt = require("prompt-sync")();
             if (this.stamina === 100){
                 console.log(`${juca}O ${this.nome2} não está mais com fome. A sua stamina já chegou em ${this.stamina}`);
             } else{
+                console.clear()
             console.log(`Crunch...Crunch...Crunch...Crunch...`);
             this.stamina = this.stamina + 10
             }
@@ -134,20 +137,21 @@ function battle(){
         });
         if (personagem[0].atk === personagem[1].atk){
             console.log(`${juca}Essa foi por pouco, ambos desviaram os ataques`);
-        } else{
+             }else{
             console.log(`${juca}${personagem[0].nome} atacou com sucesso o ${personagem[1].nome}`)
             personagem[1].vitalidade = personagem[1].vitalidade - 20;
             console.log(`${juca}${personagem[1].nome} perdeu 20 pontos de vitalidade, só lhe restando ${personagem[1].vitalidade}`);
+             }
             let comer = ""
             let cont_comer = ""
-            if (mochila[0].qnt > 0){
-              if (eo.vitalidade >10 && eo.vitalidade <50){
-                comer = prompt(`${juca}Você deseja comer um peixe para recuperar a sua vitalidade?`)
+            if (mochila[0].qnt > 0 && personagem[0].atk != personagem[1].atk){
+              if (eo.vitalidade >=10 && eo.vitalidade <= 50){
+                comer = prompt(`${juca}Você deseja comer um peixe para recuperar a sua vitalidade? Sim ou Não: `)
                 if (comer.toLowerCase() === "sim" || comer.toLowerCase() === "s"){
                   do{
                     mochila[0].qnt = mochila[0].qnt - 1
                     console.log(`Você utilizou 1 Peixe, você ainda tem: ${mochila[0].qnt} Peixes`);
-                    console.log(`${juca}Você comeu um Bagri! Sua vitalidade aumentou em ${fish.vitalidadeP}`);
+                    console.log(`${juca}Você comeu um Bagri! Sua vitalidade aumentou em ${fish.vitalidadeP} pontos`);
                     eo.vitalidade = eo.vitalidade + fish.vitalidadeP
                       if (mochila[0].qnt <= 0){
                         console.log(`${juca}Você não tem mais peixes para comer. Boa sorte!`);
@@ -158,28 +162,30 @@ function battle(){
                 } else{
                   console.log(`${juca}Você não quer comer agora, tudo bem. Mas fique de olho na sua vitalidade, se ela chegar a 0 você perderá uma vida.`);
                 }
-              }
-              } else if (eo.vitalidade <= 0){
+            }
+        }
+                  if (eo.vitalidade <= 0){
                   eo.vida = eo.vida - 1
-                  console.log(`${juca}Eo perdeu uma vida. Agora só lhe resta ${eo.vida}`);
+                  console.log(`${juca}Eo perdeu uma vida. Agora só lhe restam ${eo.vida} vidas`);
                   eo.vitalidade = 100
-              } else if(cydros.vitalidade <= 0){
+                }else if(cydros.vitalidade <= 0){
                   cydros.vida = cydros.vida - 1
                   console.log(`${juca}Cydros foi morto por Eo! Chegou o fim dos tempos sombrios no mundo!`);
                   sleep(2000);
                   console.log(`${juca}Parabéns guerreiro! você erradicou o mal na Terra, agora teremos longos anos de Paz. Obrigado!`)
-            }
-        }
-        sleep(3000);
+                 }
+        
+        sleep(4000);
         console.clear();
         for (let k = 0; k < personagem.length; k++){
            personagem[k].atk = Math.floor(Math.random() * 6) + 1
         }
-    
     } while (eo.vida >= 1 && cydros.vida >= 1);
-      if(eo.vida === 0);
-      console.log(`${juca}Infelizmente, mesmo com muito treino Cydros ainda é muito mais forte que Eo. Agora que Eo está morto, o nosso mundo está fadado a viver dias de intensa escuridão. Boa sorte para nós!`)
-}
+      if(eo.vida === 0){
+      console.log(`${juca}Infelizmente, mesmo com muito treino Cydros ainda é muito mais forte que Eo. Agora que Eo está morto, 
+      o nosso mundo está fadado a viver dias de intensa escuridão. Boa sorte para nós!`)
+    }
+   }
 
   function passeioApe() {
     var y = 0;
@@ -195,7 +201,7 @@ function battle(){
       console.log(`${juca}Você não alimentou o seu cavalo suficientemente, é melhor fazer isso antes de começar a sua jornada.`);
       conhecerCavalo();
     }
-    var x = 0;
+    var x = 1;
     do {
       x++;
       horse.cavalgar();
@@ -254,6 +260,7 @@ console.log();
         } while (dnv === 1);
         }
 
+        var dnv1 = ""
         if (opt1 === 2 ){
           console.log();
           console.log(`${juca}Vi que você não pescou nenhum peixe ainda! Os peixes são importantes para que recupere a sua vitalidade, caso precise. Quanto mais peixes melhor.`);
@@ -269,6 +276,7 @@ console.log();
             } while (dnv1 === 1);
         }
 
+        var dnv2 = ""
         if(mochila[0].qnt >= 1 && mochila[0].qnt <= 5){
               let cont = parseInt(prompt(`${juca}Vi que você só tem ${mochila[0].qnt} peixes, tem certeza que quer continuar sua jornada só com essa quantidade? (1)Sim ou (2)Não.`));
                 if (cont === 1){
@@ -311,37 +319,38 @@ console.log();
         
     console.log();
     console.log(`${juca}Seus amigos marcaram um piquenique no Pântano de Venore, vamos pegar o Hilux para buscar a Yakena e depois ir para o pequenique`);
-
+ horse.montar();
+ sleep(1000);
  passeio();
 
 
 console.clear();
 console.log(`${juca}Enquanto todos estavam felizes no piquenique, Eo e Yakena namorando feito dois pombinhos apaixonados. Seus amigos se deliciando com as comidas que trouxeram e o Spike,
 cachorro do seu amigo Earl, corria pra lá e pra cá!`);
-sleep(10000);
+sleep(15000);
 console.clear();
 console.log(`${juca}Chega de repente no local onde eles estavam, um mago maligno, super poderoso, chamado Cydros! Cydros era mundialmente conhecido por ser o maior assassino de todos os tempos,
 ele não tinha sentimentos e não perguntava o nome de suas vítimas, ele simplesmente tirava suas vidas para o seu divertimento e fortalecimento mágico!`);
-sleep(10000);
+sleep(15000);
 console.clear();
 console.log(`${juca}Com Eo e seus amigos, não foi diferente. Cydros começou a ceifar a vida de todos, um a um. Só restou uma única opção para esse grupo de camponeses indefesos, CORRER!
 Eles correram muito, mas infelizmente todos morreram, menos Eo! Que conseguiu escapar gravemente ferido.`);
-sleep(10000);
+sleep(15000);
 console.clear();
-console.log(`${juca}Eo ficou arrasado com tudo o que tinha acontecido e só o que restou para ele fazer, foi afogar as magoas na bebida.\n
+console.log(`${juca}Eo ficou arrasado com tudo o que tinha acontecido e só o que restou para ele fazer, foi afogar as magoas na bebida.
 Um tempo se passou e ele virou freguês do bar subterrâneo da cidade de Venore.`);
-sleep(10000);
+sleep(15000);
 console.clear();
-console.log(`${juca}Um belo dia, Eo encontrou um guerreiro viajante que também tinha sido um sobrevivente de um ataque de Cydros! Comovido com a história de Eo, Master Ticolas resolveu ajuda-lo \n
-e se propôs a treina-lo na arte da guerra.`);
-sleep(10000);
+console.log(`${juca}Um belo dia, Eo encontrou um guerreiro viajante que também tinha sido um sobrevivente de um ataque de Cydros! Comovido com a história de Eo, 
+Master Ticolas resolveu ajuda-lo e se propôs a treina-lo na arte da guerra.`);
+sleep(15000);
 console.clear();
-console.log(`${juca}Foram anos de treinamento! Eo, já não era mais franzino, tinha muitos musculos e embainhava uma espada milenar que ganhara quando ajudou os Trolls do pantano na guerra contra os\n
-Trolls do gelo.`);
-sleep(10000);
+console.log(`${juca}Foram anos de treinamento! Eo, já não era mais franzino, tinha muitos musculos e embainhava uma espada milenar que ganhara quando ajudou os Trolls do pantano 
+na guerra contra os Trolls do gelo.`);
+sleep(15000);
 console.clear();
 console.log(`${juca}Chegou o grande momento, esperado por muitos anos, o confronto final! O dia da vingança de Eo!`);
-sleep(1000);
 console.log(`${juca}Eo Fyragos contra Cydros, o mago maligno`);
+sleep(10000);
 console.clear();
 battle();
