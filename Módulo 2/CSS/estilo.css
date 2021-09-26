@@ -1,0 +1,53 @@
+/* TAGS */
+
+body{
+    background-image: url("../o endereço da imagem dentro da pasta do projeto"); /*serve para colocar uma imagem de fundo no site todo*/
+    background-repeat: repeat-y; /* pesquisar sobre essa tag, sobre quais as possibilidades de utilização*/
+    text-align: center;
+}
+
+h1{
+    color:blue;
+    text-decoration: underline blue;
+}
+
+
+h2{
+    color:blue;
+}
+h2:hover{
+    color:black;
+}
+
+/*a:hover{
+    background-color: blueviolet;
+    color:aqua;
+}*/
+/* CLASS começa com . (ponto) */
+
+.texto{
+    color:darkblue;
+    border: dashed 3px rgb(17, 0, 253);
+    padding: 20px;
+    margin: 20px;
+}
+
+.icones{
+    height: 150px;
+    width: 150px;
+}
+
+/* IDs começa com # (hashtag) */
+
+
+#texto3{
+    color:rgb(250, 2, 2)
+}
+#ic2{
+    height: 150px;
+    width: 200px;
+}
+#ic3{
+    height: 150px;
+    width: 200px;
+}
