@@ -1,20 +1,23 @@
 const prompt = require('prompt-sync')();
 
-/*A ideia deste projeto é criar um programa que simule uma votação com todo o conteúdo visto no módulo até este momento.
+/*A ideia deste projeto é criar um programa que simule uma votação com todo 
+o conteúdo visto no módulo até este momento.
 
 O programa tem que:
 
-Receber votos até que o usuário diga que não tem mais ninguém para votar; (1,0 ponto) OK
-Ter uma função chamada autorizaVoto(anoNascimento) retornando: "Negado`, "Opcional"  ou "Obrigatório"; (2,0 pontos) OK
-Ter uma função chamada votacao(autorizacao, voto) que valida  e contabiliza o voto (número entre 1 e 5) ou retorna a mensagem: "Você não pode votar", 
+-> Receber votos até que o usuário diga que não tem mais ninguém para votar; (1,0 ponto) OK
+-> Ter uma função chamada autorizaVoto(anoNascimento) retornando: "Negado`, "Opcional"  ou 
+"Obrigatório"; (2,0 pontos) OK
+-> Ter uma função chamada votacao(autorizacao, voto) que valida  e 
+contabiliza o voto (número entre 1 e 5) ou retorna a mensagem: "Você não pode votar", 
 caso o voto não possa ser contabilizado; (2,0 pontos) OK
-Contabilizar os votos de acordo com os significados (3,0 pontos): OK
-1 = Candidato 1
-2 = Candidato 2
-3 = Candidato 3
-4 = Voto Nulo`
-5 = Voto em Branco
-Ter uma função chamada exibirResultados() que deve mostrar: (2,0 pontos) ok
+-> Contabilizar os votos de acordo com os significados (3,0 pontos): OK
+    1 = Candidato 1
+    2 = Candidato 2
+    3 = Candidato 3
+    4 = Voto Nulo
+    5 = Voto em Branco
+-> Ter uma função chamada exibirResultados() que deve mostrar: (2,0 pontos) ok
  - O total de votos para cada candidato 
  - O total de votos nulos
  - O total de votos em branco
@@ -22,53 +25,53 @@ Ter uma função chamada exibirResultados() que deve mostrar: (2,0 pontos) ok
 
  
     let candidato_1 = {
-        nome: `Candidato 1`,
+        nome: `José`,
         cont_voto: 0
     }
 
     let candidato_2 = {
-        nome: `Candidato 2`,
+        nome: ` Maria`,
         cont_voto: 0
     }
 
     let candidato_3 = {
-        nome: `Candidato 3`,
+        nome: ` João`,
         cont_voto: 0
     }
 
     let nulo = {
-        nome: `Nulo`,
+        nome: ` Nulo`,
         cont_voto: 0
     }
 
     let branco = {
-        nome: `Branco`,
+        nome: ` Branco.`,
         cont_voto: 0
     }
 
 
     function autorizarVoto(anoNascimento){
         if (anoNascimento > 2002){
-            return `NEGADO!`
+            return `VOCÊ NÃO ESTÁ AUTORIZADO A VOTAR!`
         } else if( anoNascimento >= 1961 && anoNascimento <= 2002){
-            return `OBRIGATÓRIO!`
+            return `SEU VOTO É OBRIGATÓRIO!`
         } else {
-            return `OPCIONAL!`
+            return `SEU VOTO É OPCIONAL!`
         }
     }
 
     function votacao(autorizacao, voto){
-        if(autorizacao === `NEGADO!`){
+        if(autorizacao === `VOCÊ NÃO ESTÁ AUTORIZADO A VOTAR!`){
             return `Você não pode votar!`
-        } else if (autorizacao !== `NEGADO!` && voto === 1){
+        } else if (autorizacao !== `VOCÊ NÃO ESTÁ AUTORIZADO A VOTAR!` && voto === 1){
             candidato_1.cont_voto = candidato_1.cont_voto + 1
-        } else if (autorizacao !== `NEGADO!` && voto === 2){
+        } else if (autorizacao !== `VOCÊ NÃO ESTÁ AUTORIZADO A VOTAR!` && voto === 2){
             candidato_2.cont_voto = candidato_2.cont_voto + 1
-        } else if (autorizacao !== `NEGADO!` && voto === 3){
+        } else if (autorizacao !== `VOCÊ NÃO ESTÁ AUTORIZADO A VOTAR!` && voto === 3){
             candidato_3.cont_voto = candidato_3.cont_voto + 1
-        } else if (autorizacao !== `NEGADO!` && voto === 4){
+        } else if (autorizacao !== `VOCÊ NÃO ESTÁ AUTORIZADO A VOTAR!` && voto === 4){
             nulo.cont_voto = nulo.cont_voto + 1
-        } else if (autorizacao !== `NEGADO!` && voto === 5){
+        } else if (autorizacao !== `VOCÊ NÃO ESTÁ AUTORIZADO A VOTAR!` && voto === 5){
             branco.cont_voto = branco.cont_voto + 1
         }
     }
@@ -92,15 +95,17 @@ Ter uma função chamada exibirResultados() que deve mostrar: (2,0 pontos) ok
             console.log(`O candidato que venceu a eleição foi o ${lista_result[0].nome}`);
     }
     
-    let lista_votacao = [candidato_1.nome, candidato_2.nome,candidato_3.nome,nulo.nome,branco.nome];
+    let lista_votacao = [candidato_1.nome,candidato_2.nome,candidato_3.nome,nulo.nome,branco.nome];
     var lista_result = [candidato_1,candidato_2,candidato_3];
     let anoNascimento = prompt(`Olá, qual o seu ano de nascimento? Escreva no formato (AAAA): `);
     console.log(autorizarVoto(anoNascimento));
     do{
-    let voto = parseInt(prompt(`De acordo com a lista ${lista_votacao} qual em qual opção você vota?! Digite 1,2,3,4, ou 5 de acordo com a posição que a sua opção ocupa na lista: `));
+    console.log();
+    console.log(`De acordo com a lista ${lista_votacao} em qual opção você vota?!`); 
+    let voto = parseInt(prompt(`Digite 1,2,3,4, ou 5 de acordo com a_posição que a sua opção ocupa na lista: `));
     votacao(autorizarVoto(anoNascimento),voto);
         
-        if (autorizarVoto(anoNascimento) === `NEGADO!`){
+        if (autorizarVoto(anoNascimento) === `VOCÊ NÃO ESTÁ AUTORIZADO A VOTAR!`){
             console.log(`Você não está autorizado a votar, vamos encerrar o programa por aqui!`)
             break;
         }else{
@@ -109,5 +114,7 @@ Ter uma função chamada exibirResultados() que deve mostrar: (2,0 pontos) ok
         }
     }   while (repetir === "sim");
 
-exibirResultados();
+if(autorizarVoto(anoNascimento) != `VOCÊ NÃO ESTÁ AUTORIZADO A VOTAR!`){
+    exibirResultados();
+}
     
