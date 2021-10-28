@@ -18,7 +18,26 @@ const port = 3000;
 
 app.get("/", (req,res)=>{
     res.send("Olá mundo");
-})
+});
+
+app.get("/listar", (req,res)=>{
+    res.send("Esse é o listar");
+});
+
+app.post("/listar", (req,res)=>{
+    res.send(`Bem vindo ao listar ${req.body.nome}`);
+});
+
+app.post("/listar2", (req,res)=>{
+    const {nome, profissao, empresa} = req.body;
+    res.send(`Bem vindo ${nome}, sua profissão é: ${profissao} na empresa ${empresa}`);
+});
+
+app.put("/listar2/:id", (req,res) =>{
+    const id = req.params.id;
+    const {nome, profissao, empresa} = req.body;
+    res.send(`id: ${id}, nome: ${nome}, profissao: ${profissao}, empresa: ${empresa}`)
+});
 //app.post
 //app.put
 //app.delete
