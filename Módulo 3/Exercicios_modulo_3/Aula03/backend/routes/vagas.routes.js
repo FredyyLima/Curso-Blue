@@ -10,7 +10,7 @@ const vagas = [
     logo: "https://www.clubedecriacao.com.br/wp-content/uploads/2021/08/media-monks_logo-lockup-1-e1627974422968-1024x480.jpg",
     empresa: `Media.Monks`,
     salario: `5.000,00`,
-    senioridade: `Sênior`,
+    senoridade: `Sênior`,
     descricao: `Meu próximo emprego a partir de novembro!`
     },
 ]
