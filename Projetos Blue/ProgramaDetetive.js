@@ -1,7 +1,8 @@
+const prompt = require('prompt-sync')();
 function ler_pronome(){
   
   let pronome = ""
-  let opcao = +prompt("Como você prefere ser chamado(a)? Digite 1 para Sr. 2 para Sra.\n") 
+  let opcao = +prompt("Como você prefere ser chamado(a)? Digite 1 para Sr. 2 para Sra. ")
   
   while (true){  
     if (opcao === 1){
@@ -11,7 +12,7 @@ function ler_pronome(){
       pronome = "Sra."
       break;
     } else{
-      opcao = +prompt("Você digitou uma opção inválida! Por favor escolha entre 1 para Sr. e 2 para Sra. \n")
+      opcao = +prompt("Você digitou uma opção inválida! Por favor escolha entre 1 para Sr. e 2 para Sra. ")
   	}
   }
   return pronome
@@ -22,7 +23,7 @@ function ler_pronome(){
 bloco_detetive:{
   console.log("Programa Detetive! \n");
   //Identificação do usuário
-  let nome = prompt("Qual o seu nome? \n"); 
+  let nome = prompt("Qual o seu nome? "); 
   let pronome = ler_pronome();
   let nome2 = (pronome+nome)
   let cont = 0
@@ -46,11 +47,11 @@ bloco_detetive:{
   {
     console.log(`${pronome} precisamos que nos responda essas perguntas para que possa ir para casa tranquilamente, caso não tenha envolvimento com esse caso, é claro.`);
     console.log("");
-    user = (prompt(`${art.toUpperCase()} ${pronome} ainda mantém a sua escolha de não responder?`).toLowerCase());
+    user = (prompt(`${art.toUpperCase()} ${pronome} ainda mantém a sua escolha de não responder? `).toLowerCase());
     console.log("");
     if (user === "sim" || user === "s")
     {
-      console.log("Então não nos resta outra opção a não ser lhe prender preventivamente, até que o culpado seja encontrado.");
+      console.log("Então não nos resta outra opção a não ser lhe prender preventivamente, até que o culpado seja encontrado. ");
       break bloco_detetive
     }
     else if(user === "não" || user === "n" || user === "nao")
@@ -68,31 +69,31 @@ bloco_detetive:{
   console.log(`Primeira pergunta ${nome2}:`);
   console.log("");
 
-  let tel = (prompt(`${art.toUpperCase()} ${pronome} telefonou para a vítima?`).toLowerCase());
+  let tel = (prompt(`${art.toUpperCase()} ${pronome} telefonou para a vítima? `).toLowerCase());
     if (tel === "sim" || tel === "s")
     {
       cont = cont + 1
     }
   console.log("");
-  let local = (prompt(`${art.toUpperCase()} ${pronome} esteve no local do crime?`).toLowerCase());
+  let local = (prompt(`${art.toUpperCase()} ${pronome} esteve no local do crime? `).toLowerCase());
   if (local === "sim" || local === "s")
     {
       cont = cont + 1
     }
   console.log("");
-  let morar = (prompt(`${art.toUpperCase()} ${pronome} mora perto da vítima?`).toLowerCase());
+  let morar = (prompt(`${art.toUpperCase()} ${pronome} mora perto da vítima? `).toLowerCase());
   if (morar === "sim" || morar === "s")
     {
       cont = cont + 1
     }
   console.log("");
-  let dev = (prompt(`${art.toUpperCase()} ${pronome} devia para a vítima?`).toLowerCase());
+  let dev = (prompt(`${art.toUpperCase()} ${pronome} devia para a vítima? `).toLowerCase());
   if (dev === "sim" || dev === "s")
     {
       cont = cont + 1
     }
   console.log("");
-  let trab = (prompt(`${art.toUpperCase()} ${pronome} já trabalhou com a vítima?`).toLowerCase());
+  let trab = (prompt(`${art.toUpperCase()} ${pronome} já trabalhou com a vítima? `).toLowerCase());
   if (trab === "sim" || trab === "s")
     {
       cont = cont + 1

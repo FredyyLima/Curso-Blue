@@ -1,3 +1,5 @@
+const prompt = require('prompt-sync')();
+
 let opcao = ["","Pedra","Papel","Tesoura"];
 let ponto_u = 0;
 let ponto_c = 0;
@@ -6,10 +8,10 @@ let restart = `sim`;
 console.log(`Seja bem vindo ao Jokenpô. Vamos começar do começo...`);
 
 while ((restart === `sim`) || (restart = `s`)){
-  let rodadas = +prompt("quantas rodadas nós vamos jogar?");
+  let rodadas = +prompt("quantas rodadas nós vamos jogar? ");
 
   for (let i = 1; i <= rodadas; i++){
-    let user = +prompt("Escolha uma opção: 1 - Pedra; 2 - Papel; 3 - Tesoura");
+    let user = +prompt("Escolha uma opção: 1 - Pedra; 2 - Papel; 3 - Tesoura: ");
 
     while (user >= 1 || user <= 3){
       if (user === 1){
@@ -20,7 +22,7 @@ while ((restart === `sim`) || (restart = `s`)){
         user = opcao[3];
       } else {
         console.log(`Você digitou uma opção inválida. Tente novamente`);
-        user = +prompt("Escolha uma opção: 1 - Pedra; 2 - Papel; 3 - Tesoura");
+        user = +prompt("Escolha uma opção: 1 - Pedra; 2 - Papel; 3 - Tesoura: ");
       }
     }
     let comp = Math.floor(Math.random()*(3));
@@ -118,10 +120,12 @@ while ((restart === `sim`) || (restart = `s`)){
       console.log("|                            |");
       console.log(" ----------------------------");
     }
-    restart = (prompt(`Você deseja jogar novamente? Sim ou Não`).toLowerCase());
+    restart = (prompt(`Você deseja jogar novamente? Sim ou Não: `).toLowerCase());
     if ((restart === `nao` || restart === `n`) && ponto_u >= ponto_c){
         console.log(`Tudo bem, volte amanhã para eu tentar ganhar de você!`);
+        break
     } else if ((restart === `nao` || restart === `n`) && ponto_u < ponto_c){
       console.log(`Bem que eu imaginei, depois dessa surra que eu te dei, é melhor ir pra cas descansar mesmo!`);
+        break
     }
 }
