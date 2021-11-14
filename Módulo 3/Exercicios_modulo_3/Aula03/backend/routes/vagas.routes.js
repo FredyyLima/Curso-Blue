@@ -1,6 +1,17 @@
 const express = require('express');
+const VagasController = require('./../controllers/vagas.controller');
 //inicializar as rotas do express
 const router = express.Router();
+//inicializar a classe do controllers
+const vagasController =  new VagasController;
+
+
+router.get('/', vagasController.getVagas);
+
+module.exports = router;
+
+
+/* onst router = express.Router();
 
 
 const vagas = [
@@ -74,4 +85,4 @@ router.delete('/delete/:id', (req,res) =>{
     });
 })
 
-module.exports = router;
+module.exports = router;*/
